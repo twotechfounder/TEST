@@ -1,6 +1,6 @@
 game.StarterGui:SetCore("SendNotification", {
-    Title = "skibidi gyat";
-    Text = "Start looksmaxxing";
+    Title = "made by @dfwlol";
+    Text = "helped by kalage";
 
 })
 
@@ -18,19 +18,19 @@ end)
 
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/kpLzpNXc"))()
 
-local Window = Library:CreateWindow("Aura X Remake", Vector2.new(300, 300), Enum.KeyCode.RightShift)
+local Window = Library:CreateWindow("Twotech GUI", Vector2.new(300, 300), Enum.KeyCode.RightShift)
 local AkaliNotif =
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))()
     
 local Notify = AkaliNotif.Notify
 
-local AimingTab = Window:CreateTab("Main")
+local MainTab = Window:CreateTab("Main")
 local MiscTab = Window:CreateTab("Misc")
-local TeleportTab = Window:CreateTab("OP")
+local OPTab = Window:CreateTab("OP")
 
 local testSection = MiscTab:CreateSector("Misc", "left")
 
-testSection:AddButton(
+testMainTab:AddButton(
     "Twotech Cam",
     function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/twotechfounder/TWOTECH/main/CAMLOCK%20PROTECTED%20TWOTECH'))()
