@@ -1,5 +1,5 @@
 game.StarterGui:SetCore("SendNotification", {
-    Title = "made by @dfwlol";
+    Title = "skibidi gyat";
     Text = "helped by kalage";
 
 })
@@ -28,9 +28,9 @@ local MainTab = Window:CreateTab("Main")
 local MiscTab = Window:CreateTab("Misc")
 local OPTab = Window:CreateTab("OP")
 
-local testSection = MiscTab:CreateSector("Misc", "left")
+local testSection = MiscTab:CreateSector("Main", "left")
 
-testMainTab:AddButton(
+testSection:AddButton(
     "Twotech Cam",
     function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/twotechfounder/TWOTECH/main/CAMLOCK%20PROTECTED%20TWOTECH'))()
