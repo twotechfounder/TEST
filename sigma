@@ -1,0 +1,232 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "skibidi gyat";
+    Text = "Start looksmaxxing";
+
+})
+
+local player = game.Players.LocalPlayer
+
+local function connectCharacterAdded()
+    player.CharacterAdded:Connect(onCharacterAdded)
+end
+
+connectCharacterAdded()
+
+player.CharacterRemoving:Connect(function()
+    tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/kpLzpNXc"))()
+
+local Window = Library:CreateWindow("Aura X Remake", Vector2.new(300, 300), Enum.KeyCode.RightShift)
+local AkaliNotif =
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))()
+    
+local Notify = AkaliNotif.Notify
+
+local AimingTab = Window:CreateTab("Main")
+local MiscTab = Window:CreateTab("Misc")
+local TeleportTab = Window:CreateTab("OP")
+
+local testSection = MiscTab:CreateSector("Misc", "left")
+
+testSection:AddButton(
+    "Twotech Cam",
+    function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/twotechfounder/TWOTECH/main/CAMLOCK%20PROTECTED%20TWOTECH'))()
+    end
+)
+
+testSection:AddToggle(
+    "Enable",
+    false,
+    function(first)
+        getgenv().Enabled = first
+    end
+)
+
+testSection:AddDropdown(
+    "HitPart",
+    {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso", "Penis"},
+    "UpperTorso",
+    false,
+    function(Option)
+        getgenv().RecurringPoint = "Option"
+    end
+)
+
+testSection:AddTextbox(
+    "Cam Prediction",
+    7,
+    function(State)
+        getgenv().PredictionAmount = State
+    end
+)
+
+testSection:AddToggle(
+    "Smooth toggle",
+    false,
+    function(first)
+        getgenv().AimbotStrength = first
+    end
+)
+
+testSection:AddTextbox(
+    "Smoothness",
+    0.405,
+    function(State)
+        getgenv().AimbotStrengthAmount = State
+    end
+)
+
+testSection:AddTextbox(
+    "Radius",
+    50,
+    function(State)
+        getgenv().Radius = State
+    end
+)
+
+local testSection = AimingTab:CreateSector("Aimlock", "Right")
+
+testSection:AddToggle(
+    "Enabled",
+    Settings.rewrittenmain.Enabled,
+    function(State)
+        Settings.rewrittenmain.Enabled = State
+    end
+)
+
+testSection:AddTextbox(
+    "Prediction",
+    0.135,
+    function(State)
+        getgenv().Prediction = State
+    end
+)
+
+testSection:AddTextbox(
+    "Key",
+    Settings.rewrittenmain.Key,
+    function(State)
+        Settings.rewrittenmain.Key = State
+    end
+)
+
+testSection:AddToggle(
+    "Dot",
+    Settings.rewrittenmain.DOT,
+    function(State)
+        Settings.rewrittenmain.DOT = State
+    end
+)
+
+testSection:AddToggle(
+    "Airshot",
+    Settings.rewrittenmain.AIRSHOT,
+    function(State)
+        Settings.rewrittenmain.AIRSHOT = State
+    end
+)
+
+testSection:AddToggle(
+    "Notification",
+    Settings.rewrittenmain.NOTIF,
+    function(State)
+        Settings.rewrittenmain.NOTIF = State
+    end
+)
+
+testSection:AddToggle(
+    "Auto Prediction",
+    Settings.rewrittenmain.AUTOPRED,
+    function(State)
+        Settings.rewrittenmain.AUTOPRED = State
+    end
+)
+
+testSection:AddToggle(
+    "Resolver",
+    Settings.rewrittenmain.RESOLVER,
+    function(State)
+        Settings.rewrittenmain.RESOLVER = State
+    end
+)
+
+local testSection = AimingTab:CreateSector("Orbit", "left") 
+
+testSection:AddToggle(
+    "Enabled",
+    false,
+    function(first)
+        Settings.rewrittenmain.TargetStrafe = first
+    end
+)
+
+testSection:AddTextbox(
+    "Distance",
+    nil,
+    function(State)
+        Settings.rewrittenmain.StrafeRadius = State
+    end
+)
+
+testSection:AddTextbox(
+    "Height",
+    nil,
+    function(State)
+        Settings.rewrittenmain.StrafeHeight = State
+    end
+)
+
+testSection:AddTextbox(
+    "Speed",
+    nil,
+    function(State)
+        Settings.rewrittenmain.StrafeSpeed = State
+    end
+)
+ 
+local SelectedPart = "UpperTorso"                              
+local Prediction = true
+local PredictionValue = 0.24                            
+ 
+ 
+    local AnchorCount = 0
+    local MaxAnchor = 50
+ 
+    local CC = game:GetService"Workspace".CurrentCamera
+    local Plr;
+    local enabled = false
+    local accomidationfactor = 0.12348
+    local mouse = game.Players.LocalPlayer:GetMouse()
+    local placemarker = Instance.new("Part", game.Workspace)
+ 
+    function makemarker(Parent, Adornee, Color, Size, Size2)
+        local e = Instance.new("BillboardGui", Parent)
+        e.Name = "PP"
+        e.Adornee = Adornee
+        e.Size = UDim2.new(Size, Size2, Size, Size2)
+        e.AlwaysOnTop = Settings.rewrittenmain.DOT
+        local a = Instance.new("Frame", e)
+        if Settings.rewrittenmain.DOT == true then
+        a.Size = UDim2.new(2, 2, 2)
+        else
+        a.Size = UDim2.new(0, 0, 0, 0)
+        end
+        if Settings.rewrittenmain.DOT == true then
+        a.Transparency = 0
+        a.BackgroundTransparency = 0
+        else
+        a.Transparency = 1
+        a.BackgroundTransparency = 1
+        end
+        a.BackgroundColor3 = Color
+        local g = Instance.new("UICorner", a)
+        if Settings.rewrittenmain.DOT == false then
+        g.CornerRadius = UDim.new(0, 0)
+        else
+        g.CornerRadius = UDim.new(1, 1)
+        end
+        return(e)
+    end
